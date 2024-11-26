@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-function page(props) {
+function Page(props) {
     return (
         <>
            <h2>자식 페이지 ~~ Create!! </h2> 
@@ -10,4 +10,4 @@ function page(props) {
     );
 }
 
-export default page;
+export default Page;
