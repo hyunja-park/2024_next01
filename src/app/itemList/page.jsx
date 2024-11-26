@@ -18,7 +18,7 @@ export default function Page(props) {
             console.log("에러 발생")
         )
     }
-
+    
     // 최초 한번만 실행
     useEffect(()=>{
         getDate();
