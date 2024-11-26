@@ -14,8 +14,8 @@ export default function Home() {
       {/* <p><Image src="/images/coffee-blue.jpg" alt="" width={100} height={100} /></p> */}
 
       {/* 너비 높이는 선택 사항 */}
-      {/* <p><Image src={img01} /></p> */}
-      {/* <p><Image src={img01} width={50} height={50} /></p> */}
+      {/* <p><Image src={img01} /></p>
+      <p><Image src={img01} width={50} height={50} /></p> */}
     </>
   );
 }

@@ -4,7 +4,6 @@
 
 import Link from "next/link";
 import './globals.css';
-
 // 페이지 전체의 공통 구조를 렌더링 할때 사용
 
 // 부모컴포넌트
@@ -26,7 +25,9 @@ export default function RootLayout({ children }) {
             <li><Link href="/itemList">ItemList(외부서버)</Link></li>
             <li>Guestbook(Spring 서버)</li>
         </ol>
+        <hr />
         {children}
+        <hr />
         <ul>
           {/* /create 이면 create 폴더를 찾는다.
           (page.jsx(필수), layout.jax(선택)가 있어야 한다.) */}

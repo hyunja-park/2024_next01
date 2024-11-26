@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
-export default function Page(props) {
+function Page(props) {
     const [list, setList] = useState([]);
     const API_URL = "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline";
     const getDate = () => {
@@ -13,14 +13,18 @@ export default function Page(props) {
             API_URL
         ).then(res => {
             // console.log(res.data)
-            setList(res.data);
+            // setList(res.data);
+
+            // 상위 12개 데이터만 추출
+            setList(res.data.slice(0, 12));
+
         }).catch(
             console.log("에러 발생")
         )
     }
     
     // 최초 한번만 실행
-    useEffect(()=>{
+    useEffect(() => {
         getDate();
     },[])
     return (
@@ -42,4 +46,4 @@ export default function Page(props) {
     );
 }
 
- Page;
+export default Page;
