@@ -1,18 +1,20 @@
 "use client"
-import { Link, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import axios from 'axios';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import './guestBookList.css';
 
 function Page(props) {
     const [list, setList] = useState([]);
-    const API_URL = "http://localhost:8080/api/guestbook/list";
+    // const API_URL = "http://localhost:8080/api/guestbook/list";
+    const API_URL = "/guestbook/list";
     const getDate = () => {
         axios.get(
             API_URL
         ).then(res => {
             setList(res.data);
-           // console.log(res.data);
+            console.log(res.data);
         }).catch(
             console.log("에러 발생")
         )
