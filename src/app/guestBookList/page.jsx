@@ -19,8 +19,10 @@ function Page(props) {
         try {
             setLoading(true); // 로딩 상태 시작
             const response = await axios.get(API_URL); // axios를 사용한 API 호출
+            const data = response.data.data;
             // console.log(res.data)
-            setList(response.data);
+            // setList(data);
+            setList([]);
         } catch (err) {
             console.error("Error fetching data:", err);
             setError(err.message);
@@ -55,7 +57,13 @@ function Page(props) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {list.map((item) => (
+                        { list.length === 0 ?
+                            <TableRow>
+                                <TableCell colSpan={2} style={{ textAlign:"center" }}>
+                                    <h3>등록된 정보가 없습니다.</h3>
+                                </TableCell>
+                            </TableRow>
+                        : list.map((item) => (
                             <TableRow key={item.gb_idx}>
                                 <TableCell className="table-cell">{item.gb_name}</TableCell>
                                 <TableCell className="table-cell">
