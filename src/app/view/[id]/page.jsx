@@ -22,8 +22,7 @@ function Page({ params }) {
                 // Promise인지 아닌지 신경 쓰지 않고 항상 비동기적으로 다룰 수 있습니다.
                 // const resolvedParams = await Promise.resolve(params); // params 언래핑
                 // const { id } = resolvedParams; // id 추출
-                
-                const { id } = await Promise.resolve(params); // id 추출
+                const { id } = await Promise.resolve(params);
                 const API_URL = `${MAKEUP_API_BASE_URL}/v1/products/${id}.json`;
 
                 // 데이터 가져오기

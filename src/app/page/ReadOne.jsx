@@ -4,8 +4,8 @@ import React from 'react';
 function ReadOne(props) {
     return (
         <>
-          <h2>Read-1</h2>  
-          <Image src="/images/tree-1.jpg" alt=""
+            <h2>Read-1</h2>
+            <Image src="/images/tree-1.jpg" alt=""
                 width={300} height={300} />
         </>
     );

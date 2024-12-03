@@ -15,14 +15,13 @@ function Page(props) {
     const API_URL = `${LOCAL_API_BASE_URL}/guestbook/list`;
 
     // 데이터 가져오기
-    const getDate = async () => {
+    const getData = async () => {
         try {
             setLoading(true); // 로딩 상태 시작
             const response = await axios.get(API_URL); // axios를 사용한 API 호출
             const data = response.data.data;
-            // console.log(res.data)
-            // setList(data);
-            setList([]);
+            setList(data);
+            // setList([]); // 없을때 연습
         } catch (err) {
             console.error("Error fetching data:", err);
             setError(err.message);
@@ -30,10 +29,10 @@ function Page(props) {
             setLoading(false); // 로딩 상태 종료
         }
     };
-    
-    // 최초 한번만 실행
+
+    // 최초 한 번만 실행
     useEffect(() => {
-        getDate();
+        getData();
     }, []);
 
     // 로딩 중 화면
@@ -57,20 +56,20 @@ function Page(props) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        { list.length === 0 ?
+                        {list.length === 0 ?
                             <TableRow>
-                                <TableCell colSpan={2} style={{ textAlign:"center" }}>
-                                    <h3>등록된 정보가 없습니다.</h3>
+                                <TableCell colSpan={2} style={{ textAlign: "center" }}>
+                                    <h3>등록된 정보가 존재하지 않습니다.</h3>
                                 </TableCell>
                             </TableRow>
-                        : list.map((item) => (
-                            <TableRow key={item.gb_idx}>
-                                <TableCell className="table-cell">{item.gb_name}</TableCell>
-                                <TableCell className="table-cell">
-                                    <Link href={`/guestBookDetails/${item.gb_idx}`}>{item.gb_subject}</Link>
-                                </TableCell>
-                            </TableRow>
-                        ))}
+                            : list.map((item) => (
+                                <TableRow key={item.gb_idx}>
+                                    <TableCell className="table-cell">{item.gb_name}</TableCell>
+                                    <TableCell className="table-cell">
+                                        <Link href={`/guestBookDetails/${item.gb_idx}`}>{item.gb_subject}</Link>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
                     </TableBody>
                 </Table>
             </TableContainer>

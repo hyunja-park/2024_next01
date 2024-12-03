@@ -6,16 +6,16 @@ function Page(props) {
         <table>
             <tbody>
                 <tr>
-                    <td><Image src="/images/kitten-1.jpg" alt="" width={50} height={50} ></Image></td>
-                    <td><Image src="/images/kitten-2.jpg" alt="" width={50} height={50} ></Image></td>
-                    <td><Image src="/images/kitten-3.jpg" alt="" width={50} height={50} ></Image></td>
+                    <td><Image src="/images/tree-1.jpg" alt="" width={50} height={50}></Image></td>
+                    <td><Image src="/images/tree-2.jpg" alt="" width={50} height={50}></Image></td>
+                    <td><Image src="/images/tree-3.jpg" alt="" width={50} height={50}></Image></td>
                 </tr>
                 <tr>
-                    <td><Image src="/images/tree-1.jpg" alt="" width={50} height={50} ></Image></td>
-                    <td><Image src="/images/tree-2.jpg" alt="" width={50} height={50} ></Image></td>
-                    <td><Image src="/images/tree-3.jpg" alt="" width={50} height={50} ></Image></td>
+                    <td><Image src="/images/tree-4.jpg" alt="" width={50} height={50}></Image></td>
+                    <td><Image src="/images/coffee-blue.jpg" alt="" width={50} height={50}></Image></td>
+                    <td><Image src="/images/tree-1.jpg" alt="" width={50} height={50}></Image></td>
                 </tr>
-            </tbody> 
+            </tbody>
         </table>
     );
 }
