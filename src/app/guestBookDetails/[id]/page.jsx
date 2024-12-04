@@ -118,7 +118,7 @@ function Page({ params }) {
                             <TableCell className="table-cell">DATE</TableCell>
                             <TableCell className="table-cell">{item.gb_regdate.substring(0, 10)}</TableCell>
                         </TableRow>
-                        ${item.gb_filename && (
+                        {item.gb_filename && (
                             <TableRow>
                                 <TableCell className="table-cell">IMAGE</TableCell>
                                 <TableCell className="table-cell">
