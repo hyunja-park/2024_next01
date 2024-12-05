@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 
 function Page({ params }) {
     const LOCAL_API_BASE_URL = process.env.NEXT_PUBLIC_LOCAL_API_BASE_URL;
+    const LOCAL_IMG_URL = process.env.NEXT_PUBLIC_LOCAL_IMG_URL;  // 이미지 업.다운로드
     const [item, setItem] = useState(null);       // 데이터 상태
     const [loading, setLoading] = useState(true); // 로딩 상태
     const [error, setError] = useState(null);     // 에러 상태
@@ -108,7 +109,7 @@ function Page({ params }) {
                         </TableRow>
                         <TableRow>
                             <TableCell className="table-cell">CONTENT</TableCell>
-                            <TableCell className="table-cell">{item.gb_content}</TableCell>
+                            <TableCell className="table-cell"><pre>{item.gb_content}</pre></TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell className="table-cell">EMAIL</TableCell>
@@ -120,11 +121,30 @@ function Page({ params }) {
                         </TableRow>
                         {item.gb_filename && (
                             <TableRow>
-                                <TableCell className="table-cell">IMAGE</TableCell>
-                                <TableCell className="table-cell">
-                                    <img src={item.gb_filename} style={{width:"150px"}} />
-                                </TableCell>
-                            </TableRow>
+                            <TableCell className="table-cell">IMAGE</TableCell>
+                            <TableCell className="table-cell">
+                            {isAuthenticated ? (
+                                <a
+                                    href={`${LOCAL_API_BASE_URL}/guestbook/download/${item.gb_filename}`} // Spring Boot 다운로드 URL
+                                    download={item.gb_filename} // 다운로드 파일 이름 지정
+                                    target="_blank" // 새 탭에서 열림
+                                    rel="noopener noreferrer" // 보안 향상을 위해 추가
+                                >
+                                    <img
+                                        src={`${LOCAL_IMG_URL}/${item.gb_filename}`}
+                                        alt="Uploaded Image"
+                                        style={{ width: "150px" }}
+                                    />
+                                </a>
+                                ) : (
+                                    <img
+                                        src={`${LOCAL_IMG_URL}/${item.gb_filename}`}
+                                        alt="Uploaded Image"
+                                        style={{ width: "150px" }} // 로그아웃시 다운로드 안되게
+                                    />
+                                )}
+                            </TableCell>
+                        </TableRow>
                         )}
                     </TableBody>
                 </Table>
